@@ -1,0 +1,45 @@
+/* ============================================
+   ZD.TechLab — Tokens de diseño
+   Esquema de armonía: complementario dividido
+   Base: verde institucional (matiz 100°)
+   Complementario dividido: naranja (~35°) e info azul (~198°)
+   Regla 60-30-10: neutro / marca / acento
+   ============================================ */
+
+:root{
+  /* Neutros — el 60% de la pantalla */
+  --superficie: #F7F8F6;
+  --superficie-alta: #FFFFFF;
+  --borde: #DDE3DA;
+
+  /* Marca — el 30% (verde, hsl(100,100%,curva)) */
+  --color-marca: #1F5E14;
+  --color-marca-suave: #EAF3E3;
+
+  /* Acción y acento — el 10% */
+  --color-accion: #39A900;   /* botones primarios, enlaces activos */
+  --color-acento: #F08A00;   /* naranja: llamadas de atención puntuales */
+
+  /* Texto */
+  --texto: #15231A;          /* 13.4:1 sobre --superficie -> AAA */
+  --texto-tenue: #4A5A50;    /* 6.2:1 sobre --superficie  -> AA+ */
+  --texto-claro: #FFFFFF;
+
+  /* Semánticos de sistema (no son decoración, son convención) */
+  --exito: #2E7D32;
+  --advertencia: #A85E00;
+  --error: #B3261E;
+  --info: #15506B;
+
+  /* Tipografía */
+  --fuente-base: system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Escala tipográfica en rem (base 16px) */
+:root{
+  --texto-xs: 0.8rem;
+  --texto-sm: 0.9rem;
+  --texto-md: 1rem;
+  --texto-lg: 1.25rem;
+  --texto-xl: 1.9rem;
+}

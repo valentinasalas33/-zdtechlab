@@ -1,0 +1,6 @@
+<svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo de ZD.TechLab">
+  <rect x="0" y="4" width="32" height="32" rx="6" fill="#1F5E14"/>
+  <path d="M8 12 L24 12 L10 28 L26 28" stroke="#39A900" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="40" y="19" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#15231A">ZD.TechLab</text>
+  <text x="40" y="32" font-family="system-ui, sans-serif" font-size="8" fill="#4A5A50">Gestión de tienda tecnológica</text>
+</svg>
