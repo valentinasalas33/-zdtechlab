@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Componentes — ZD.TechLab</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <main class="panel__contenido">
+    <h1>Guía de componentes</h1>
+    <p class="texto-tenue">Pase el mouse sobre los botones para ver <code>:hover</code>, y navegue con la tecla Tab para ver <code>:focus-visible</code>.</p>
+
+    <section aria-label="Botones">
+      <h2>Botones</h2>
+      <p>Normal:</p>
+      <button type="button" class="boton">Primario</button>
+      <button type="button" class="boton-secundario">Secundario</button>
+      <button type="button" class="boton-peligro-lleno">Peligro</button>
+      <p>Deshabilitado:</p>
+      <button type="button" class="boton" disabled>Primario</button>
+      <button type="button" class="boton-secundario" disabled>Secundario</button>
+      <button type="button" class="boton-peligro-lleno" disabled>Peligro</button>
+    </section>
+
+    <section aria-label="Campos de formulario">
+      <h2>Campos de formulario</h2>
+      <form class="formulario">
+        <fieldset>
+          <legend>Ejemplo</legend>
+          <label for="campo-normal">Campo normal</label>
+          <input type="text" id="campo-normal" name="campo-normal">
+
+          <div class="campo-error">
+            <label for="campo-error">Campo con error</label>
+            <input type="text" id="campo-error" name="campo-error" aria-invalid="true" aria-describedby="msg-error">
+            <p class="mensaje-error" id="msg-error">Este campo es obligatorio.</p>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+    <section aria-label="Tarjeta de indicador">
+      <h2>Tarjeta de indicador</h2>
+      <article class="tarjeta tarjeta--verde">
+        <h3 class="tarjeta__rotulo">Ejemplo de indicador</h3>
+        <p class="tarjeta__valor">42</p>
+      </article>
+    </section>
+
+    <section aria-label="Tabla de datos">
+      <h2>Tabla de datos</h2>
+      <table>
+        <caption>Ejemplo de tabla</caption>
+        <thead>
+          <tr><th scope="col">Nombre</th><th scope="col">Valor</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Fila 1</td><td>100</td></tr>
+          <tr><td>Fila 2</td><td>200</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-label="Mensajes de alerta">
+      <h2>Mensajes de alerta</h2>
+      <p class="alerta alerta-exito">Operación realizada con éxito.</p>
+      <p class="alerta alerta-error">Ocurrió un error al procesar la solicitud.</p>
+    </section>
+
+    <section aria-label="Ventana modal">
+      <h2>Ventana modal</h2>
+      <p class="texto-tenue">Así se ve abierta (la lógica para abrirla/cerrarla con JavaScript se implementa el día 8):</p>
+      <div class="demo-modal-fondo">
+        <div class="modal" role="dialog" aria-labelledby="modal-titulo">
+          <h2 id="modal-titulo">Confirmar acción</h2>
+          <p>¿Desea eliminar este producto?</p>
+          <div class="modal__acciones">
+            <button type="button" class="boton-secundario">Cancelar</button>
+            <button type="button" class="boton-peligro-lleno">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
