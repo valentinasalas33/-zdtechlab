@@ -20,11 +20,16 @@
   --color-accion: #39A900;   /* botones primarios, enlaces activos */
   --color-acento: #F08A00;   /* naranja: llamadas de atención puntuales */
 
-  /* Texto */
+   /* Texto */
   --texto: #15231A;          /* 13.4:1 sobre --superficie -> AAA */
   --texto-tenue: #4A5A50;    /* 6.2:1 sobre --superficie  -> AA+ */
   --texto-claro: #FFFFFF;
-
+  /* Texto oscuro para usar SOBRE fondos brillantes (accion/acento):
+     el blanco no alcanza 4.5:1 sobre estos verdes/naranjas saturados;
+     el texto oscuro sí (5.3:1 y 6.5:1). Verificado con la fórmula
+     de luminancia relativa de WCAG 2.1. */
+  --texto-sobre-brillante: #15231A;
+   
   /* Semánticos de sistema (no son decoración, son convención) */
   --exito: #2E7D32;
   --advertencia: #A85E00;
