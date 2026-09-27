@@ -246,3 +246,24 @@ caption{ text-align: left; font-size: var(--texto-sm); color: var(--texto-tenue)
 @media (prefers-reduced-motion: reduce){
   *{ transition-duration: .01ms !important; }
 }
+/* ---------- Estados adicionales y componentes del día 6 ---------- */
+.boton:active{ background:var(--color-marca); }
+.boton:disabled{ opacity:.55; cursor:not-allowed; }
+
+.boton-secundario{ background:var(--superficie-alta); color:var(--color-marca); font-weight:600; border:1px solid var(--color-marca); border-radius:4px; padding:.7rem 1.4rem; font-size:var(--texto-md); cursor:pointer; transition:background .18s ease; }
+.boton-secundario:hover{ background:var(--color-marca-suave); }
+.boton-secundario:focus-visible{ outline:3px solid var(--color-acento); outline-offset:2px; }
+.boton-secundario:disabled{ opacity:.55; cursor:not-allowed; }
+
+.boton-peligro-lleno{ background:var(--error); color:#fff; font-weight:600; border:none; border-radius:4px; padding:.7rem 1.4rem; font-size:var(--texto-md); cursor:pointer; transition:background .18s ease; }
+.boton-peligro-lleno:hover{ background:#8f1e18; }
+.boton-peligro-lleno:focus-visible{ outline:3px solid var(--color-acento); outline-offset:2px; }
+.boton-peligro-lleno:disabled{ opacity:.55; cursor:not-allowed; }
+
+.formulario .campo-error input{ border-color:var(--error); }
+.formulario .mensaje-error{ color:var(--error); font-size:var(--texto-xs); margin:.2rem 0 0; }
+
+.demo-modal-fondo{ background:#15231A; border-radius:8px; padding:2rem; display:flex; align-items:center; justify-content:center; }
+.modal{ background:var(--superficie-alta); border-radius:8px; padding:1.5rem; width:min(360px,90vw); }
+.modal h2{ margin-top:0; }
+.modal__acciones{ display:flex; gap:.6rem; justify-content:flex-end; margin-top:1rem; }
