@@ -194,26 +194,17 @@ a { color: var(--color-marca); }
 .tarjeta__rotulo{ margin: 0 0 .3rem; font-size: var(--texto-sm); color: var(--texto-tenue); }
 .tarjeta__valor{ margin: 0; font-size: 1.7rem; font-weight: 700; }
 
-.graficos{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-}
 .tarjeta-grafico{
   background: var(--superficie-alta);
   border: 1px solid var(--borde);
   border-radius: 8px;
   padding: 1rem 1.2rem;
-  height: 320px;
-  display: flex;
-  flex-direction: column;
 }
-.tarjeta-grafico canvas{
-  flex: 1 1 auto;
-  min-height: 0;
-  max-width: 100%;
+.grafico-envoltorio{
+  position: relative;
+  height: 260px;
+  width: 100%;
 }
-
 /* ---------- Tabla de datos ---------- */
 table{ width: 100%; border-collapse: collapse; margin-top: .5rem; }
 thead{ background: var(--color-marca); color: #fff; position: sticky; top: 0; }
