@@ -65,10 +65,19 @@ $nombreMes = $meses[$mesActual] ?? '';
         <button type="submit" class="boton">Filtrar gráficos</button>
       </form>
 
-      <section class="graficos" aria-label="Gráficos de ventas">
-        <div class="tarjeta-grafico"><h2>Ventas por mes</h2><canvas id="g-ventas" height="220" aria-label="Gráfico de barras de ventas mensuales" role="img"></canvas></div>
-        <div class="tarjeta-grafico"><h2>Pedidos por mes</h2><canvas id="g-pedidos" height="220" aria-label="Gráfico de líneas de pedidos mensuales" role="img"></canvas></div>
-        <div class="tarjeta-grafico"><h2>Ventas por categoría</h2><canvas id="g-categorias" height="220" aria-label="Gráfico de dona de ventas por categoría" role="img"></canvas></div>
+          <section class="graficos" aria-label="Gráficos de ventas">
+        <div class="tarjeta-grafico">
+          <h2>Ventas por mes</h2>
+          <div class="grafico-envoltorio"><canvas id="g-ventas" aria-label="Gráfico de barras de ventas mensuales" role="img"></canvas></div>
+        </div>
+        <div class="tarjeta-grafico">
+          <h2>Pedidos por mes</h2>
+          <div class="grafico-envoltorio"><canvas id="g-pedidos" aria-label="Gráfico de líneas de pedidos mensuales" role="img"></canvas></div>
+        </div>
+        <div class="tarjeta-grafico">
+          <h2>Ventas por categoría</h2>
+          <div class="grafico-envoltorio"><canvas id="g-categorias" aria-label="Gráfico de dona de ventas por categoría" role="img"></canvas></div>
+        </div>
       </section>
     </main>
     <?php require __DIR__ . '/app/vistas/parciales/pie.php'; ?>
