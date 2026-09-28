@@ -52,11 +52,27 @@ $nombreMes = $meses[$mesActual] ?? '';
         <article class="tarjeta tarjeta--naranja"><p class="tarjeta__rotulo">Ventas del mes</p><p class="tarjeta__valor"><?= $formatoMoneda((float) $indicadores['ventas_mes']) ?></p></article>
         <article class="tarjeta tarjeta--error"><p class="tarjeta__rotulo">Stock crítico</p><p class="tarjeta__valor"><?= (int) $indicadores['stock_critico'] ?></p></article>
       </section>
+
+      <form id="form-filtro-fechas" class="formulario--linea" aria-label="Filtro de rango de fechas para los gráficos">
+        <div>
+          <label for="desde">Desde</label>
+          <input type="date" id="desde" name="desde">
+        </div>
+        <div>
+          <label for="hasta">Hasta</label>
+          <input type="date" id="hasta" name="hasta">
+        </div>
+        <button type="submit" class="boton">Filtrar gráficos</button>
+      </form>
+
       <section class="graficos" aria-label="Gráficos de ventas">
         <div class="tarjeta-grafico"><h2>Ventas por mes</h2><canvas id="g-ventas" height="220" aria-label="Gráfico de barras de ventas mensuales" role="img"></canvas></div>
+        <div class="tarjeta-grafico"><h2>Pedidos por mes</h2><canvas id="g-pedidos" height="220" aria-label="Gráfico de líneas de pedidos mensuales" role="img"></canvas></div>
         <div class="tarjeta-grafico"><h2>Ventas por categoría</h2><canvas id="g-categorias" height="220" aria-label="Gráfico de dona de ventas por categoría" role="img"></canvas></div>
       </section>
     </main>
     <?php require __DIR__ . '/app/vistas/parciales/pie.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="<?= BASE_URL ?>js/graficos.js" defer></script>
 </body>
 </html>
