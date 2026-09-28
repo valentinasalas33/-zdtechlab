@@ -1,0 +1,38 @@
+/* ZD.TechLab — Estilos de reportes (Día 15) */
+.reporte__encabezado{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 2.5px solid var(--color-accion);
+  padding-bottom: .8rem;
+  margin-bottom: 1rem;
+}
+.reporte__logo{ width: 56px; height: 56px; object-fit: contain; }
+.reporte__marca{ flex: 1; }
+.reporte__marca h1{ margin: 0; font-size: 1.2rem; }
+.reporte__marca p{ margin: .1rem 0; font-size: var(--texto-sm); color: var(--texto-tenue); }
+.reporte__meta{ text-align: right; font-size: var(--texto-xs); color: var(--texto-tenue); }
+.reporte__meta p{ margin: .1rem 0; }
+.reporte__filtros{ margin-bottom: 1rem; }
+.reporte__acciones{ margin-bottom: 1rem; }
+.reporte__totales td{ font-weight: 700; background: var(--color-marca-suave); }
+.reporte__grafico{ position: relative; height: 260px; max-width: 480px; margin-bottom: 1rem; }
+.reporte__pie{ margin-top: 1rem; font-size: var(--texto-xs); color: var(--texto-tenue); border-top: 1px solid var(--borde); padding-top: .5rem; }
+
+@page{ size: A4 portrait; margin: 14mm 12mm 18mm; }
+
+@media print{
+  .panel__menu, .panel__barra, .reporte__filtros, .reporte__acciones, .no-imprimir{ display: none !important; }
+  body{ background: #fff; font-size: 10.5pt; }
+  .panel{ display: block; }
+  .panel__contenido{ padding: 0; margin: 0; }
+  .reporte__encabezado{
+    border-bottom: 2.5px solid var(--color-accion);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  table{ width: 100%; border-collapse: collapse; }
+  thead{ display: table-header-group; }
+  tr, img, .reporte__grafico{ break-inside: avoid; }
+  .reporte__pie{ position: fixed; bottom: 0; width: 100%; font-size: 8pt; }
+}
