@@ -68,15 +68,9 @@ tbody.addEventListener("click", (e) => {
   }
 });
 
-// 3. Menú lateral
-const botonMenu = document.querySelector(".boton-menu");
-const menu = document.querySelector(".panel__menu");
-
-function alternarMenu() {
-  const abierto = menu.classList.toggle("abierto");
-  botonMenu.setAttribute("aria-expanded", abierto);
-}
-botonMenu.addEventListener("click", alternarMenu);
+// 3. Validación del formulario, sin usar alert()
+// (el menú lateral se movió a js/menu.js el día 12, para no repetirlo
+// en cada página)
 
 // 4. Validación del formulario, sin usar alert()
 const form = document.querySelector("#form-producto");
