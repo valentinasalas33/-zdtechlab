@@ -1,9 +1,18 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * ZD.TechLab — Ingreso (Día 10, sesión reforzada el Día 11)
+ * CSRF, mensaje de error genérico, bloqueo tras 5 intentos fallidos en
+ * 15 minutos, hash con password_verify() y migración de costo con
+ * password_needs_rehash(). La sesión (regeneración de ID, huella del
+ * navegador, expiración) la abre abrirSesion() de app/seguridad/sesion.php.
+ */
+
 require_once __DIR__ . '/app/config/conexion.php';
 require_once __DIR__ . '/app/seguridad/csrf.php';
-session_start();
+require_once __DIR__ . '/app/seguridad/sesion.php';
+iniciarSesionSegura();
 
 const MAX_INTENTOS  = 5;
 const MINUTOS_LAPSO = 15;
@@ -14,7 +23,12 @@ function registrarIntento(PDO $pdo, string $correo, bool $exitoso): void
         ->execute(['correo' => $correo, 'exitoso' => $exitoso ? 1 : 0]);
 }
 
-$error = '';
+$mensajesSesion = [
+    'requiere_ingreso' => 'Debe iniciar sesión para continuar.',
+    'sesion_invalida'  => 'Su sesión no es válida. Ingrese de nuevo.',
+    'sesion_expirada'  => 'Su sesión expiró por inactividad. Ingrese de nuevo.',
+];
+$error = $mensajesSesion[$_GET['m'] ?? ''] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -51,13 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             registrarIntento($pdo, $correo, true);
 
-            $_SESSION['usuario'] = [
-                'id'     => (int) $u['id'],
-                'nombre' => $u['nombre'],
-                'rol'    => $u['rol'],
-            ];
+            abrirSesion($u); // regenera el ID, guarda huella y marcas de tiempo
 
-            header('Location: dashboard.html');
+            header('Location: dashboard.php');
             exit;
 
         } else {
