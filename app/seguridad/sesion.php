@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const INACTIVIDAD_MAX = 1800;  // 30 minutos
+const INACTIVIDAD_MAX = 60;  // 60 segundos
 const SESION_MAX       = 28800; // 8 horas
 
 function iniciarSesionSegura(): void
