@@ -13,11 +13,12 @@ final class ClienteModelo
         $offset = max(0, ($pagina - 1) * $porPagina);
         $st = $this->pdo->prepare(
             'SELECT id, nombre, documento, correo FROM clientes
-             WHERE nombre LIKE :b OR documento LIKE :b
+             WHERE nombre LIKE :b1 OR documento LIKE :b2
              ORDER BY nombre
              LIMIT :lim OFFSET :off'
         );
-        $st->bindValue(':b', '%' . $busqueda . '%');
+        $st->bindValue(':b1', '%' . $busqueda . '%');
+        $st->bindValue(':b2', '%' . $busqueda . '%');
         $st->bindValue(':lim', $porPagina, PDO::PARAM_INT);
         $st->bindValue(':off', $offset, PDO::PARAM_INT);
         $st->execute();
@@ -26,8 +27,9 @@ final class ClienteModelo
 
     public function contar(string $busqueda = ''): int
     {
-        $st = $this->pdo->prepare('SELECT COUNT(*) AS total FROM clientes WHERE nombre LIKE :b OR documento LIKE :b');
-        $st->bindValue(':b', '%' . $busqueda . '%');
+        $st = $this->pdo->prepare('SELECT COUNT(*) AS total FROM clientes WHERE nombre LIKE :b1 OR documento LIKE :b2');
+        $st->bindValue(':b1', '%' . $busqueda . '%');
+        $st->bindValue(':b2', '%' . $busqueda . '%');
         $st->execute();
         return (int) $st->fetch()['total'];
     }
