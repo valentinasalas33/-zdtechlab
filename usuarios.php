@@ -20,7 +20,7 @@ require_once __DIR__ . '/app/config/rutas.php';
     <?php require __DIR__ . '/app/vistas/parciales/menu.php'; ?>
     <main class="panel__contenido">
       <h1>Usuarios</h1>
-      <p class="texto-tenue">Este módulo se completa en un día posterior del plan (listado, creación y edición). Por ahora, esta página solo demuestra que únicamente el rol administrador puede llegar hasta acá.</p>
+      <p class="texto-tenue">Esta página demuestra el control de acceso por rol: solo un usuario con rol administrador puede llegar hasta acá (Día 11 — Actividad 4). El alta de nuevos usuarios se hace desde <a href="<?= BASE_URL ?>app/controladores/registro.php">el formulario de registro</a>.</p>
     </main>
     <?php require __DIR__ . '/app/vistas/parciales/pie.php'; ?>
 </body>
