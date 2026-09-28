@@ -71,9 +71,6 @@ function alternarMenu() {
 }
 
 botonMenu.addEventListener("click", alternarMenu);
-botonMenu.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") alternarMenu();
-});
 
 // 4. Validación del formulario, sin usar alert()
 const form = document.querySelector("#form-producto");
