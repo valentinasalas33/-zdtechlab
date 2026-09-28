@@ -6,7 +6,6 @@ $paginaActual = basename($_SERVER['PHP_SELF']);
 $opciones = [
     ['archivo' => 'dashboard.php',  'texto' => 'Tablero',     'roles' => ['administrador', 'vendedor', 'consultor']],
     ['archivo' => 'productos.php',  'texto' => 'Productos',   'roles' => ['administrador', 'vendedor', 'consultor']],
-    ['archivo' => 'categorias.php', 'texto' => 'Categorías',  'roles' => ['administrador', 'vendedor']],
     ['archivo' => 'clientes.php',   'texto' => 'Clientes',    'roles' => ['administrador', 'vendedor']],
     ['archivo' => 'pedidos.php',    'texto' => 'Pedidos',     'roles' => ['administrador', 'vendedor']],
     ['archivo' => 'reportes.php',   'texto' => 'Reportes',    'roles' => ['administrador', 'consultor']],
