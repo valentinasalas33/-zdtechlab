@@ -1,2 +1,3 @@
 # Credenciales reales de la base de datos — nunca se suben al repositorio
 app/config/credenciales.php
+/vendor/
