@@ -1,17 +1,18 @@
 // ============================================
-// ZD.TechLab — Interfaz de productos (Día 8)
+// ZD.TechLab — Interfaz de productos (Día 9: datos reales desde MySQL)
 // ============================================
 
 const tbody = document.querySelector("#tabla-productos tbody");
 const moneda = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 });
+let productos = [];
 
-// 1. Pintar la tabla desde el estado, sin escribir filas a mano en el HTML
+// 1. Pintar la tabla con lo que llega del servidor
 const plantilla = p => {
   const tr = document.createElement("tr");
   tr.innerHTML = `
     <td>${p.nombre}</td>
-    <td>${nombreCategoria(p.categoriaId)}</td>
-    <td>${moneda.format(p.precio)}</td>
+    <td>${p.categoria}</td>
+    <td>${moneda.format(Number(p.precio))}</td>
     <td>${p.stock}</td>
     <td>
       <button type="button" class="boton-mini" data-accion="editar" data-id="${p.id}">Editar</button>
@@ -24,14 +25,19 @@ function pintar(lista) {
   tbody.replaceChildren(...lista.map(plantilla));
 }
 
-pintar(productos);
+// Pide la lista de productos a PHP, que consulta MySQL con sentencia preparada
+async function cargarProductos(texto = "") {
+  const respuesta = await fetch(`app/api/productos.php?buscar=${encodeURIComponent(texto)}`);
+  productos = await respuesta.json();
+  pintar(productos);
+}
 
-// 2. Buscador en vivo con filter
+cargarProductos();
+
+// 2. Buscador en vivo: ahora la búsqueda la resuelve MySQL, no JavaScript
 const buscador = document.querySelector("#buscador");
 buscador.addEventListener("input", () => {
-  const texto = buscador.value.trim().toLowerCase();
-  const filtrados = productos.filter(p => p.nombre.toLowerCase().includes(texto));
-  pintar(filtrados);
+  cargarProductos(buscador.value.trim());
 });
 
 // Un solo escucha para toda la tabla: delegación de eventos
@@ -45,7 +51,8 @@ tbody.addEventListener("click", (e) => {
 
   if (accion === "editar") {
     form.elements.nombre.value = producto.nombre;
-    form.elements.categoria_id.value = producto.categoriaId;
+    const opcion = [...form.elements.categoria_id.options].find(o => o.textContent === producto.categoria);
+    form.elements.categoria_id.value = opcion ? opcion.value : "";
     form.elements.precio.value = producto.precio;
     form.elements.stock.value = producto.stock;
     editandoId = producto.id;
@@ -61,7 +68,7 @@ tbody.addEventListener("click", (e) => {
   }
 });
 
-// 3. Menú lateral: responde a clic y a la tecla Enter
+// 3. Menú lateral
 const botonMenu = document.querySelector(".boton-menu");
 const menu = document.querySelector(".panel__menu");
 
@@ -69,7 +76,6 @@ function alternarMenu() {
   const abierto = menu.classList.toggle("abierto");
   botonMenu.setAttribute("aria-expanded", abierto);
 }
-
 botonMenu.addEventListener("click", alternarMenu);
 
 // 4. Validación del formulario, sin usar alert()
@@ -85,22 +91,7 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  const datos = {
-    nombre: form.elements.nombre.value.trim(),
-    categoriaId: Number(form.elements.categoria_id.value),
-    precio: Number(precio.value),
-    stock: Number(form.elements.stock.value)
-  };
-
-  if (editandoId) {
-    const producto = productos.find(p => p.id === editandoId);
-    Object.assign(producto, datos);
-    editandoId = null;
-    form.querySelector("button[type=submit]").textContent = "Guardar";
-  } else {
-    productos.push({ id: siguienteId(), ...datos });
-  }
-
-  pintar(productos);
+  // El guardado real (INSERT/UPDATE en MySQL) se conecta cuando se construya el CRUD completo
+  console.log("Formulario válido, listo para guardar:", { nombre: form.elements.nombre.value });
   form.reset();
 });
