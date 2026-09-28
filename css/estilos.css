@@ -204,6 +204,14 @@ a { color: var(--color-marca); }
   border: 1px solid var(--borde);
   border-radius: 8px;
   padding: 1rem 1.2rem;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+.tarjeta-grafico canvas{
+  flex: 1 1 auto;
+  min-height: 0;
+  max-width: 100%;
 }
 
 /* ---------- Tabla de datos ---------- */
